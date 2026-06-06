@@ -1,0 +1,10 @@
+target = "esp32"
+
+[module.i2c]
+sda = 8
+scl = 9
+
+[module.ina219]
+sda = 8
+scl = 9
+channels = "a:0x40"
