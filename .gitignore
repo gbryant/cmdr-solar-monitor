@@ -23,3 +23,6 @@
 /.build_number
 __pycache__/
 .DS_Store
+
+# Local publish-prep notes
+PUBLISH_CHECKLIST.md

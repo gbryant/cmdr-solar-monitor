@@ -24,10 +24,14 @@ diagnostics — `i2c scan` to confirm the INA219 ACKs at 0x40), and `ina219`
 
 ## Setup
 
+Prereqs: ESP-IDF v5 and the `cmdr` tool — commander's
+[getting-started guide](https://github.com/gbryant/commander/blob/main/docs/getting-started.md)
+covers installing both.
+
 ```bash
 cp secrets.h.example secrets.h     # then fill in your WiFi
-esp                                # load the ESP-IDF environment (once per shell)
-./bum                              # build + flash + monitor (build/upload/monitor are gitignored)
+cmdr regen                         # re-emit the dev scripts (bum/build/upload/monitor are gitignored)
+./bum                              # build + flash + monitor (the scripts self-source ESP-IDF)
 ```
 
 First build runs `idf.py set-target esp32s3` automatically.
@@ -35,7 +39,7 @@ First build runs `idf.py set-target esp32s3` automatically.
 ## Logging & graphing
 
 The device serves readings over telnet (`cmdr-solar-monitor.local:23`). The host
-scripts (need `pip install pyserial matplotlib`):
+scripts (graphing needs `pip install matplotlib`):
 
 ```bash
 python3 scripts/poll_solar.py            # poll every 60 s → solar.db (Ctrl-C to stop)
@@ -49,7 +53,8 @@ gitignored `solar.db`; it re-inits the INA219 if readings stick at 0 mA.
 
 ## Updating the commander framework
 
-Framework changes live in the commander repo; adopt the latest with **`cmdr pull`**
-(rebuild after). The commander version is the `GIT_TAG` in `CMakeLists.txt`
-(`main` = latest default branch; a release tag like `v1.2.0` pins it). Don't depend
-on a local commander checkout as a normal workflow.
+This project pins commander to a release tag (the `GIT_TAG` in `CMakeLists.txt`).
+`cmdr pull` re-fetches that same tag, so on its own it changes nothing — to adopt a
+newer release, **`cmdr pin <tag>` then `cmdr pull`** (rebuild after). `cmdr unpin`
+floats on `main` instead. Don't depend on a local commander checkout as a normal
+workflow.
