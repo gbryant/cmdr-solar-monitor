@@ -51,6 +51,12 @@ python3 scripts/graph_solar.py --hours 24
 `poll_solar.py` reads `ina <ch> stats` (atomic voltage+current) and writes to the
 gitignored `solar.db`; it re-inits the INA219 if readings stick at 0 mA.
 
+![Two weeks of solar panel data in three stacked plots — voltage, current and
+power — showing a clear daily cycle, with one visibly overcast day.](docs/img/solar-output.png)
+
+Two weeks of real output from `graph_solar.py`. The panel's daily cycle is obvious,
+and so is the weather: 05/26 was overcast, 05/31 was the best day of the fortnight.
+
 ## Updating the commander framework
 
 This project pins commander to a release tag (the `GIT_TAG` in `CMakeLists.txt`).
