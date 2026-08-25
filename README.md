@@ -54,7 +54,7 @@ gitignored `solar.db`; it re-inits the INA219 if readings stick at 0 mA.
 power — showing a clear daily cycle, with one visibly overcast day.](docs/img/solar-output.png)
 
 Two weeks of real output from `graph_solar.py`. The panel's daily cycle is obvious,
-and so is the weather: 05/26 was overcast, 05/31 was the best day of the fortnight.
+and so is the weather: 05/26 was overcast, 05/31 the best day recorded.
 
 ## Updating the commander framework
 
