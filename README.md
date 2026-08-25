@@ -6,8 +6,7 @@ I²C and serves the readings over WiFi/telnet. A host script polls it on an inte
 and logs to SQLite; a second script graphs the result.
 
 This is the **ESP-IDF / CMake** flavor of a commander consumer (the ESP32 builds
-against `runners/esp32` via FetchContent). Naming: a `cmdr-` prefix marks commander
-consumers so they don't need an umbrella folder.
+against `runners/esp32` via FetchContent).
 
 ## Hardware
 
